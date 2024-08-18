@@ -4,6 +4,10 @@
  */
 package proyectofinal;
 
+import Paquetes.ListaPaquetes;
+import Paquetes.Paquete;
+import java.util.Scanner;
+
 /**
  *
  * @author chris
@@ -16,5 +20,5 @@ public class ProyectoFinal {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
-}
+   
+    } 
