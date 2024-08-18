@@ -5,7 +5,6 @@
 package RutasEntrega;
 
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  *
@@ -15,7 +14,7 @@ public class RutaEntrega {
     private String codigoRuta;
     private String nombre;
     private String descripcion;
-    private Set<String> destinos;
+    private HashSet<String> destinos;
 
     public String getCodigoRuta() {
         return codigoRuta;
@@ -29,56 +28,58 @@ public class RutaEntrega {
         return descripcion;
     }
 
-    public Set<String> getDestinos() {
+    public HashSet<String> getDestinos() {
         return destinos;
+    }
+
+    public void setCodigoRuta(String codigoRuta) {
+        this.codigoRuta = codigoRuta;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public void setDestinos(Set<String> destinos) {
-        this.destinos = destinos;
-    }
-   
-    public RutaEntrega(String codigoRuta, String nombre, String descripcion) {
+     public RutaEntrega(String codigoRuta, String nombre, String descripcion) {
         this.codigoRuta = codigoRuta;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.destinos = new HashSet<>();
     }
 
-    public void agregarDestino(String destino) {
-        destinos.add(destino);
+    public RutaEntrega(String codigoRuta, String nombre, String descripcion, HashSet<String> destinos) {
+        this.codigoRuta = codigoRuta;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.destinos = new HashSet<>(destinos);
     }
 
-    public void actualizarRuta(String nuevaDescripcion, Set<String> nuevosDestinos) {
-        setDescripcion(nuevaDescripcion);
-        setDestinos(nuevosDestinos);
+    public void agregarDestino(String destino) {
+        destinos.add(destino);
     }
 
     public void eliminarDestino(String destino) {
         destinos.remove(destino);
     }
 
-    public boolean buscarDestino(String destino) {
-        return destinos.contains(destino);
+    public void actualizarDescripcion(String nuevaDescripcion) {
+        this.descripcion = nuevaDescripcion;
     }
 
-    public void mostrarInformacion() {
-        System.out.println("Código de Ruta: " + codigoRuta);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Descripción: " + descripcion);
-        System.out.println("Destinos: " + destinos);
+    public void actualizarDestinos(HashSet<String> nuevosDestinos) {
+        this.destinos = nuevosDestinos;
     }
 
     @Override
     public String toString() {
-        return "RutaEntrega{" +
-                "codigoRuta='" + codigoRuta + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", destinos=" + destinos +
-                '}';
+        return "RutaEntrega{" + "codigoRuta=" + codigoRuta + ", nombre=" + nombre + ", descripcion=" + descripcion + ", destinos=" + destinos + '}';
     }
-}
+
+    public boolean contieneDestino(String destino) {
+        return destinos.contains(destino);
+    }
+ }
+
