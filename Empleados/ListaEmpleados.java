@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
  */
 public class ListaEmpleados {
     private ArrayList<Empleado> empleados = new ArrayList<>();
-
+    
     public void agregarEmpleado(Empleado empleado) {
         empleados.add(empleado);
     }
