@@ -4,6 +4,7 @@
  */
 package MenuPrincipal;
 
+import Empleados.FrmEmpleados;
 import ListaClientes.FrmClientes;
 
 /**
@@ -30,8 +31,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         DeskMenPrinc = new javax.swing.JDesktopPane();
         Clientes = new javax.swing.JButton();
+        btnEmpleados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MENU PRINCIPAL");
 
         Clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/personal.png"))); // NOI18N
         Clientes.addActionListener(new java.awt.event.ActionListener() {
@@ -40,23 +43,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
+            }
+        });
+
         DeskMenPrinc.setLayer(Clientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(btnEmpleados, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout DeskMenPrincLayout = new javax.swing.GroupLayout(DeskMenPrinc);
         DeskMenPrinc.setLayout(DeskMenPrincLayout);
         DeskMenPrincLayout.setHorizontalGroup(
             DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(Clientes)
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(375, Short.MAX_VALUE))
         );
         DeskMenPrincLayout.setVerticalGroup(
             DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
+                .addContainerGap(272, Short.MAX_VALUE)
+                .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -84,6 +98,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Mostrar el Internal Frame
     internalFrame.setVisible(true);
     }//GEN-LAST:event_ClientesActionPerformed
+
+    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+    FrmEmpleados internalFrame = new FrmEmpleados();
+    DeskMenPrinc.add(internalFrame);
+    internalFrame.setVisible(true);
+
+
+    }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,5 +145,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Clientes;
     private javax.swing.JDesktopPane DeskMenPrinc;
+    private javax.swing.JButton btnEmpleados;
     // End of variables declaration//GEN-END:variables
 }
