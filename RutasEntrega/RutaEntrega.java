@@ -14,7 +14,7 @@ public class RutaEntrega {
     private String codigoRuta;
     private String nombre;
     private String descripcion;
-    private HashSet<String> destinos;
+    private String destinos;
 
     public String getCodigoRuta() {
         return codigoRuta;
@@ -28,7 +28,7 @@ public class RutaEntrega {
         return descripcion;
     }
 
-    public HashSet<String> getDestinos() {
+    public String getDestinos() {
         return destinos;
     }
 
@@ -43,33 +43,22 @@ public class RutaEntrega {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-     public RutaEntrega(String codigoRuta, String nombre, String descripcion) {
+     public RutaEntrega(String codigoRuta, String nombre, String descripcion, String destinos) {
         this.codigoRuta = codigoRuta;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.destinos = new HashSet<>();
+        this.destinos = destinos;
     }
 
-    public RutaEntrega(String codigoRuta, String nombre, String descripcion, HashSet<String> destinos) {
-        this.codigoRuta = codigoRuta;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.destinos = new HashSet<>(destinos);
-    }
+    
 
-    public void agregarDestino(String destino) {
-        destinos.add(destino);
-    }
-
-    public void eliminarDestino(String destino) {
-        destinos.remove(destino);
-    }
+    
 
     public void actualizarDescripcion(String nuevaDescripcion) {
         this.descripcion = nuevaDescripcion;
     }
 
-    public void actualizarDestinos(HashSet<String> nuevosDestinos) {
+    public void actualizarDestinos(String nuevosDestinos) {
         this.destinos = nuevosDestinos;
     }
 

@@ -39,7 +39,7 @@ public class ListaRutaEntrega {
         return null;
     }
 
-    public boolean actualizarRuta(String codigoRuta, String nuevaDescripcion, HashSet<String> nuevosDestinos) {
+    public boolean actualizarRuta(String codigoRuta, String nuevaDescripcion, String nuevosDestinos) {
         RutaEntrega ruta = buscarRuta(codigoRuta);
         if (ruta != null) {
             ruta.actualizarDescripcion(nuevaDescripcion);
