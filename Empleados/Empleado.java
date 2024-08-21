@@ -17,7 +17,7 @@ public class Empleado {
     private String telefono;
     private String correo;
     private String puesto;
-    private double salario;
+    private String salario;
     
      public String getId() {
         return id;
@@ -51,16 +51,16 @@ public class Empleado {
         return puesto;
     }
 
-    public void setPuesto(String puesto, double salario) {
+    public void setPuesto(String puesto, String salario) {
         this.puesto = puesto;
         this.salario = salario;
     }
 
-    public double getSalario() {
+    public String getSalario() {
         return salario;
     }
 
-    public Empleado(String id, String nombre, LocalDate fechaNacimiento, String telefono, String correo, String puesto, double salario) {
+    public Empleado(String id, String nombre, LocalDate fechaNacimiento, String telefono, String correo, String puesto, String salario) {
         this.id = id;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;

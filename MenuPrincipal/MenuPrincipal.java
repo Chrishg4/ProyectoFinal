@@ -6,6 +6,7 @@ package MenuPrincipal;
 
 import Empleados.FrmEmpleados;
 import ListaClientes.FrmClientes;
+import RutasEntrega.FrmRutaEntrega;
 
 /**
  *
@@ -31,7 +32,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         DeskMenPrinc = new javax.swing.JDesktopPane();
         Clientes = new javax.swing.JButton();
-        btnEmpleados = new javax.swing.JButton();
+        btnRutaEntrega = new javax.swing.JButton();
+        btnEmpleados1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
@@ -43,15 +45,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnEmpleados.setText("empleados");
-        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+        btnRutaEntrega.setText("Ruta Entrega");
+        btnRutaEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpleadosActionPerformed(evt);
+                btnRutaEntregaActionPerformed(evt);
+            }
+        });
+
+        btnEmpleados1.setText("empleados");
+        btnEmpleados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleados1ActionPerformed(evt);
             }
         });
 
         DeskMenPrinc.setLayer(Clientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(btnEmpleados, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(btnRutaEntrega, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(btnEmpleados1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout DeskMenPrincLayout = new javax.swing.GroupLayout(DeskMenPrinc);
         DeskMenPrinc.setLayout(DeskMenPrincLayout);
@@ -60,18 +70,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(DeskMenPrincLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addGap(191, 191, 191)
+                .addComponent(btnRutaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
+            .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DeskMenPrincLayout.createSequentialGroup()
+                    .addGap(178, 178, 178)
+                    .addComponent(btnEmpleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(365, Short.MAX_VALUE)))
         );
         DeskMenPrincLayout.setVerticalGroup(
             DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
-                .addContainerGap(272, Short.MAX_VALUE)
-                .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addGroup(DeskMenPrincLayout.createSequentialGroup()
+                .addContainerGap(262, Short.MAX_VALUE)
+                .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
+                        .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
+                        .addComponent(btnRutaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))))
+            .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
+                    .addContainerGap(262, Short.MAX_VALUE)
+                    .addComponent(btnEmpleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(16, 16, 16)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,13 +123,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     internalFrame.setVisible(true);
     }//GEN-LAST:event_ClientesActionPerformed
 
-    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
-    FrmEmpleados internalFrame = new FrmEmpleados();
+    private void btnRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutaEntregaActionPerformed
+    FrmRutaEntrega internalFrame = new FrmRutaEntrega();
     DeskMenPrinc.add(internalFrame);
     internalFrame.setVisible(true);
 
 
-    }//GEN-LAST:event_btnEmpleadosActionPerformed
+    }//GEN-LAST:event_btnRutaEntregaActionPerformed
+
+    private void btnEmpleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleados1ActionPerformed
+    FrmEmpleados internalFrame = new FrmEmpleados();
+    DeskMenPrinc.add(internalFrame);
+    internalFrame.setVisible(true); 
+    }//GEN-LAST:event_btnEmpleados1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +175,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Clientes;
     private javax.swing.JDesktopPane DeskMenPrinc;
-    private javax.swing.JButton btnEmpleados;
+    private javax.swing.JButton btnEmpleados1;
+    private javax.swing.JButton btnRutaEntrega;
     // End of variables declaration//GEN-END:variables
 }

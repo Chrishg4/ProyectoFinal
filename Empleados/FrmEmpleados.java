@@ -3,19 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Empleados;
-
+import Empleados.Empleado;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 /**
  *
  * @author jdarg
  */
 public class FrmEmpleados extends javax.swing.JInternalFrame {
-
+    ListaEmpleados empleados = new ListaEmpleados(); 
+    
     /**
      * Creates new form FrmEmpleados
      */
     public FrmEmpleados() {
         initComponents();
-        ListaEmpleados e = new ListaEmpleados();
+        
     }
 
     /**
@@ -37,17 +41,17 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
         btnEliminarEmp = new javax.swing.JButton();
         btnActualizarEmp = new javax.swing.JButton();
         btnBuscarEmp = new javax.swing.JButton();
-        btnListar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtIdentificacion = new javax.swing.JTextField();
         txtFechaNacimiento = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jtListaEmpleados = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         txtPuesto = new javax.swing.JTextField();
         btnAgregarEmp = new javax.swing.JButton();
+        lbael = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -76,26 +80,24 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
         });
 
         btnActualizarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
+        btnActualizarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarEmpActionPerformed(evt);
+            }
+        });
 
         btnBuscarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
-
-        btnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lista.png"))); // NOI18N
+        btnBuscarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEmpActionPerformed(evt);
+            }
+        });
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
-
-        jtListaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
-            }
-        ));
-        jScrollPane3.setViewportView(jtListaEmpleados);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel7.setText("Puesto");
@@ -104,6 +106,22 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
         btnAgregarEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarEmpActionPerformed(evt);
+            }
+        });
+
+        lbael.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
+        lbael.setText("Salario");
+
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/limpio.png"))); // NOI18N
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -116,16 +134,17 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
         jDesktopPane2.setLayer(btnEliminarEmp, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(btnActualizarEmp, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(btnBuscarEmp, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(btnListar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(txtIdentificacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(txtFechaNacimiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(txtTelefono, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(txtCorreo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(txtPuesto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(btnAgregarEmp, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(lbael, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(txtSalario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(btnLimpiar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -133,9 +152,6 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -143,11 +159,13 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
                         .addGap(16, 16, 16)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbael, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(txtNombre))
+                            .addComponent(txtNombre)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jDesktopPane2Layout.createSequentialGroup()
@@ -171,16 +189,16 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
                         .addGap(17, 17, 17)))
                 .addContainerGap())
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(220, 220, 220)
+                .addGap(214, 214, 214)
                 .addComponent(btnAgregarEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminarEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btnActualizarEmp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btnBuscarEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -204,16 +222,22 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminarEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnActualizarEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscarEmp, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAgregarEmp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbael)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminarEmp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarEmp, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnActualizarEmp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscarEmp, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnLimpiar)))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,6 +262,12 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
 
     private void btnEliminarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpActionPerformed
         // TODO add your handling code here:
+        if(!this.txtIdentificacion.getText().isEmpty()){
+            empleados.eliminarEmpleado(this.txtIdentificacion.getText());
+             ClearTxt();
+        }else{
+             JOptionPane.showMessageDialog(null,"La cedula no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnEliminarEmpActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -245,17 +275,70 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAgregarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpActionPerformed
-        ListaEmpleados agregar = new ListaEmpleados();
-        //agregar.agregarEmpleado();
+     
+        if(!this.txtIdentificacion.getText().isEmpty()&&!this.txtNombre.getText().isEmpty()
+                &&!this.txtFechaNacimiento.getText().isEmpty()&&!this.txtPuesto.getText().isEmpty()
+                &&!this.txtTelefono.getText().isEmpty() &&!this.txtCorreo.getText().isEmpty()&&!this.txtSalario.getText().isEmpty()){
+                DateTimeFormatter formt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+               Empleado emp = new Empleado(txtIdentificacion.getText(),txtNombre.getText(),LocalDate.parse(txtFechaNacimiento.getText(), formt),
+                    txtTelefono.getText(),txtCorreo.getText(),txtPuesto.getText(),txtSalario.getText());
+               empleados.agregarEmpleado(emp);
+               ClearTxt();
+               
+        }else{
+            JOptionPane.showMessageDialog(null,"La cedula no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+        }
+     
     }//GEN-LAST:event_btnAgregarEmpActionPerformed
 
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioActionPerformed
 
+    private void btnBuscarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpActionPerformed
+        // TODO add your handling code here:
+          if(!this.txtIdentificacion.getText().isEmpty()&& empleados.buscarEmpleado(this.txtIdentificacion.getText())!=null){
+              
+            Empleado emp = empleados.buscarEmpleado(this.txtIdentificacion.getText());
+            this.txtCorreo.setText(emp.getCorreo());
+            this.txtFechaNacimiento.setText(String.valueOf(emp.getFechaNacimiento()));
+            this.txtIdentificacion.setText(emp.getId());
+            this.txtNombre.setText(emp.getNombre());
+            this.txtPuesto.setText(emp.getPuesto());
+            this.txtSalario.setText(emp.getSalario());
+            this.txtTelefono.setText(emp.getTelefono());
+       
+           
+        }else{
+             JOptionPane.showMessageDialog(null,"La cedula no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnBuscarEmpActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        ClearTxt();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnActualizarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnActualizarEmpActionPerformed
+
+   public void ClearTxt(){
+       this.txtCorreo.setText("");
+       this.txtFechaNacimiento.setText("");
+       this.txtIdentificacion.setText("");
+       this.txtNombre.setText("");
+       this.txtPuesto.setText("");
+       this.txtSalario.setText("");
+       this.txtTelefono.setText("");
+   }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarEmp;
     private javax.swing.JButton btnAgregarEmp;
     private javax.swing.JButton btnBuscarEmp;
     private javax.swing.JButton btnEliminarEmp;
-    private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -264,13 +347,13 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jtListaEmpleados;
+    private javax.swing.JLabel lbael;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPuesto;
+    private javax.swing.JTextField txtSalario;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

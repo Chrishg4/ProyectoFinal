@@ -75,7 +75,7 @@ public class RutaEntrega {
 
     @Override
     public String toString() {
-        return "RutaEntrega{" + "codigoRuta=" + codigoRuta + ", nombre=" + nombre + ", descripcion=" + descripcion + ", destinos=" + destinos + '}';
+        return "RutaEntrega" + "codigoRuta = " + codigoRuta + ", nombre = " + nombre + ", descripcion = " + descripcion + ", destinos = " + destinos + '}';
     }
 
     public boolean contieneDestino(String destino) {

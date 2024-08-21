@@ -42,21 +42,40 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Clientes" min="-2" pref="144" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnEmpleados" min="-2" pref="144" max="-2" attributes="0"/>
-                  <EmptySpace pref="375" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+                  <Component id="btnRutaEntrega" min="-2" pref="144" max="-2" attributes="0"/>
+                  <EmptySpace pref="202" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
+                      <Component id="btnEmpleados1" min="-2" pref="144" max="-2" attributes="0"/>
+                      <EmptySpace pref="365" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="272" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btnEmpleados" min="-2" pref="127" max="-2" attributes="0"/>
-                      <Component id="Clientes" min="-2" pref="127" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace pref="262" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="Clientes" min="-2" pref="127" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btnRutaEntrega" min="-2" pref="127" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="262" max="32767" attributes="0"/>
+                      <Component id="btnEmpleados1" min="-2" pref="127" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -72,12 +91,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClientesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnEmpleados">
+        <Component class="javax.swing.JButton" name="btnRutaEntrega">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ruta Entrega"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRutaEntregaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnEmpleados1">
           <Properties>
             <Property name="text" type="java.lang.String" value="empleados"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmpleadosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmpleados1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

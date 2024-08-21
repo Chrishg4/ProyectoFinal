@@ -18,7 +18,7 @@ public class ListaEmpleados {
         empleados.add(empleado);
     }
 
-    public void actualizarEmpleado(String id, String nuevoTelefono, String nuevoCorreo, String nuevoPuesto, double nuevoSalario) {
+    public void actualizarEmpleado(String id, String nuevoTelefono, String nuevoCorreo, String nuevoPuesto, String nuevoSalario) {
         Empleado empleado = buscarEmpleado(id);
         empleado.setTelefono(nuevoTelefono);
         empleado.setCorreo(nuevoCorreo);
@@ -36,7 +36,7 @@ public class ListaEmpleados {
                 return empleado;
             }
         }
-        throw new NoSuchElementException("Empleado no encontrado.");
+        return null;
     }
 
     public void mostrarEmpleado(String id) {
