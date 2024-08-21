@@ -245,7 +245,8 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAgregarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpActionPerformed
-        
+        ListaEmpleados agregar = new ListaEmpleados();
+        //agregar.agregarEmpleado();
     }//GEN-LAST:event_btnAgregarEmpActionPerformed
 
 

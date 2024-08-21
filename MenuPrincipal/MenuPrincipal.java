@@ -43,6 +43,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnEmpleados.setText("empleados");
         btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmpleadosActionPerformed(evt);
