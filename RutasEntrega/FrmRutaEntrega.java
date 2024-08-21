@@ -10,6 +10,8 @@ package RutasEntrega;
  */
 public class FrmRutaEntrega extends javax.swing.JInternalFrame {
 
+    private ListaRutaEntrega listaRutaEntrega; 
+
     /**
      * Creates new form FrmRutaEntrega
      */
@@ -17,8 +19,10 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
         initComponents();
         this.txtCodigoRuta.setVisible(false);
         this.txtDescripcion.setVisible(false);
-       this.txtListaDestino.setVisible(false);
-       this.txtNombre.setVisible(false);
+        this.txtListaDestino.setVisible(false);
+        this.txtNombre.setVisible(false);
+        
+        listaRutaEntrega = new ListaRutaEntrega();
     }
 
     /**
@@ -38,12 +42,13 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         txtListaDestino = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblCodigoRuta = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
+        lblDestino = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        txtResultados = new javax.swing.JTextField();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -69,7 +74,7 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 130, 40));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 130, 40));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +82,7 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 100, 40));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 100, 40));
 
         txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -103,21 +108,21 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtListaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 120, 30));
 
-        jLabel1.setText("   Codigo de Ruta: ");
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, 30));
+        lblCodigoRuta.setText("   Codigo de Ruta: ");
+        lblCodigoRuta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblCodigoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, 30));
 
-        jLabel2.setText("         Nombre: ");
-        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 110, 30));
+        lblNombre.setText("         Nombre: ");
+        lblNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 110, 30));
 
-        jLabel3.setText("       Descripcion: ");
-        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 110, 30));
+        lblDescripcion.setText("       Descripcion: ");
+        lblDescripcion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 110, 30));
 
-        jLabel4.setText("         Destino:");
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 110, 30));
+        lblDestino.setText("         Destino:");
+        lblDestino.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 110, 30));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,10 +130,11 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 100, 40));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 100, 40));
 
         jButton1.setText("Guardar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 103, 90, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 100, 90, 40));
+        jPanel1.add(txtResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 310, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,10 +158,48 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodigoRutaActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       this.txtCodigoRuta.setVisible(true);
-       this.txtDescripcion.setVisible(true);
-       this.txtListaDestino.setVisible(true);
-       this.txtNombre.setVisible(true);
+       // Hacer visibles los JTextField cuando se presiona el botón 'Agregar'
+    txtCodigoRuta.setVisible(true);
+    txtNombre.setVisible(true);
+    txtDescripcion.setVisible(true);
+    txtListaDestino.setVisible(true);
+
+    // Hacer visibles las etiquetas correspondientes
+    lblCodigoRuta.setVisible(true);
+    lblNombre.setVisible(true);
+    lblDescripcion.setVisible(true);
+    lblDestino.setVisible(true);
+
+    // Obtener los datos ingresados por el usuario
+    String codigoRuta = txtCodigoRuta.getText();
+    String nombre = txtNombre.getText();
+    String descripcion = txtDescripcion.getText();
+
+    // Crear una nueva instancia de RutaEntrega
+    RutaEntrega nuevaRuta = new RutaEntrega(codigoRuta, nombre, descripcion);
+
+    // Usar la instancia para agregar la nueva ruta a la lista
+    listaRutaEntrega.agregarRuta(nuevaRuta);
+
+    // Mostrar la información de la ruta en el área de resultados o en un mensaje
+    txtResultados.setText("Ruta agregada: " + nuevaRuta.toString());
+
+    // Limpiar los campos de texto
+    txtCodigoRuta.setText("");
+    txtNombre.setText("");
+    txtDescripcion.setText("");
+    txtListaDestino.setText(""); 
+
+    // hacer invisibles los campos de texto y etiquetas nuevamente (si uno quiere)
+    txtCodigoRuta.setVisible(false);
+    txtNombre.setVisible(false);
+    txtDescripcion.setVisible(false);
+    txtListaDestino.setVisible(false);
+
+    lblCodigoRuta.setVisible(false);
+    lblNombre.setVisible(false);
+    lblDescripcion.setVisible(false);
+    lblDestino.setVisible(false);
        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -190,14 +234,15 @@ public class FrmRutaEntrega extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCodigoRuta;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblDestino;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtCodigoRuta;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtListaDestino;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtResultados;
     // End of variables declaration//GEN-END:variables
 }
