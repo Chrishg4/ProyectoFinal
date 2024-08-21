@@ -7,6 +7,10 @@ package MenuPrincipal;
 import Empleados.FrmEmpleados;
 import ListaClientes.FrmClientes;
 import RutasEntrega.FrmRutaEntrega;
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -19,6 +23,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        quitarFondoBoton(btnClientes);
+        quitarFondoBoton(btnEmpleado);
+        quitarFondoBoton(btnRutas);
+        quitarFondoBoton(btnPaquete);
+        quitarFondoBoton(btnEnvio);
     }
 
     /**
@@ -30,71 +39,137 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DeskMenPrinc = new javax.swing.JDesktopPane();
-        Clientes = new javax.swing.JButton();
-        btnRutaEntrega = new javax.swing.JButton();
-        btnEmpleados1 = new javax.swing.JButton();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Iconos/FondoMenu.jpg"));
+        DeskMenPrinc = new javax.swing.JDesktopPane(){
+            public void paintComponent (Graphics g){
+                g.drawImage (icon.getImage(), 0, 0, getWidth(),getHeight(),this);
+            }
+        };
+        btnClientes = new javax.swing.JButton();
+        btnEmpleado = new javax.swing.JButton();
+        btnRutas = new javax.swing.JButton();
+        btnPaquete = new javax.swing.JButton();
+        btnEnvio = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
 
-        Clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/personal.png"))); // NOI18N
-        Clientes.addActionListener(new java.awt.event.ActionListener() {
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionClientes.png"))); // NOI18N
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClientesActionPerformed(evt);
+                btnClientesActionPerformed(evt);
             }
         });
 
-        btnRutaEntrega.setText("Ruta Entrega");
-        btnRutaEntrega.addActionListener(new java.awt.event.ActionListener() {
+        btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/gestionEmpleado.png"))); // NOI18N
+        btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRutaEntregaActionPerformed(evt);
+                btnEmpleadoActionPerformed(evt);
             }
         });
 
-        btnEmpleados1.setText("empleados");
-        btnEmpleados1.addActionListener(new java.awt.event.ActionListener() {
+        btnRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionRuta.png"))); // NOI18N
+        btnRutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpleados1ActionPerformed(evt);
+                btnRutasActionPerformed(evt);
             }
         });
 
-        DeskMenPrinc.setLayer(Clientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(btnRutaEntrega, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(btnEmpleados1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        btnPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionPaquetes.png"))); // NOI18N
+
+        btnEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionEnvio.png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Gestion de Empresa");
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Gestionar Clientes");
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Gestionar Ruta");
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Gestionar Empleados");
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Gestionar Paquetes");
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Gestionar Envio");
+
+        DeskMenPrinc.setLayer(btnClientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(btnEmpleado, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(btnRutas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(btnPaquete, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(btnEnvio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DeskMenPrinc.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout DeskMenPrincLayout = new javax.swing.GroupLayout(DeskMenPrinc);
         DeskMenPrinc.setLayout(DeskMenPrincLayout);
         DeskMenPrincLayout.setHorizontalGroup(
             DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(191, 191, 191)
-                .addComponent(btnRutaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
-            .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                    .addGap(178, 178, 178)
-                    .addComponent(btnEmpleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(365, Short.MAX_VALUE)))
+                .addGap(231, 231, 231)
+                .addComponent(jLabel1))
+            .addGroup(DeskMenPrincLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(btnClientes)
+                .addGap(64, 64, 64)
+                .addComponent(btnEmpleado)
+                .addGap(54, 54, 54)
+                .addComponent(btnRutas)
+                .addGap(44, 44, 44)
+                .addComponent(btnPaquete)
+                .addGap(54, 54, 54)
+                .addComponent(btnEnvio))
+            .addGroup(DeskMenPrincLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel2)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel4)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel5)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel6))
         );
         DeskMenPrincLayout.setVerticalGroup(
             DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addContainerGap(262, Short.MAX_VALUE)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel1)
+                .addGap(93, 93, 93)
                 .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
-                        .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
-                        .addComponent(btnRutaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))))
-            .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMenPrincLayout.createSequentialGroup()
-                    .addContainerGap(262, Short.MAX_VALUE)
-                    .addComponent(btnEmpleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(16, 16, 16)))
+                    .addComponent(btnClientes)
+                    .addComponent(btnEmpleado)
+                    .addComponent(btnRutas)
+                    .addComponent(btnPaquete)
+                    .addComponent(btnEnvio))
+                .addGap(18, 18, 18)
+                .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,7 +186,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
+    private void quitarFondoBoton(JButton boton) {
+    boton.setBackground(new Color(0, 0, 0, 0));
+    boton.setBorder(null);
+}
+    
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
         // Crear una instancia del Internal Frame
     FrmClientes internalFrame = new FrmClientes();
@@ -121,21 +201,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Mostrar el Internal Frame
     internalFrame.setVisible(true);
-    }//GEN-LAST:event_ClientesActionPerformed
+    }//GEN-LAST:event_btnClientesActionPerformed
 
-    private void btnRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutaEntregaActionPerformed
+    private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
     FrmRutaEntrega internalFrame = new FrmRutaEntrega();
     DeskMenPrinc.add(internalFrame);
     internalFrame.setVisible(true);
 
 
-    }//GEN-LAST:event_btnRutaEntregaActionPerformed
+    }//GEN-LAST:event_btnEmpleadoActionPerformed
 
-    private void btnEmpleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleados1ActionPerformed
+    private void btnRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasActionPerformed
     FrmEmpleados internalFrame = new FrmEmpleados();
     DeskMenPrinc.add(internalFrame);
     internalFrame.setVisible(true); 
-    }//GEN-LAST:event_btnEmpleados1ActionPerformed
+    }//GEN-LAST:event_btnRutasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,9 +253,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Clientes;
     private javax.swing.JDesktopPane DeskMenPrinc;
-    private javax.swing.JButton btnEmpleados1;
-    private javax.swing.JButton btnRutaEntrega;
+    private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnEmpleado;
+    private javax.swing.JButton btnEnvio;
+    private javax.swing.JButton btnPaquete;
+    private javax.swing.JButton btnRutas;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
