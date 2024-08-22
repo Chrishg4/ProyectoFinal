@@ -67,7 +67,7 @@ public class Cliente {
         this.edad = edad;
     }
 
-    public Cliente(String id, String nombre, LocalDate fechaNac, String telefono, String correo /*int edad*/) {
+    public Cliente(String id, String nombre, LocalDate fechaNac, String telefono, String correo, int edad) {
         this.id = id;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
@@ -77,7 +77,7 @@ public class Cliente {
     }
 
     public Cliente() {
-        this("","",LocalDate.now(),"",""/*0*/);
+        this("","",LocalDate.now(),"","",0);
     }
     
     

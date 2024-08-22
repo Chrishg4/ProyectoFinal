@@ -11,6 +11,8 @@ import java.awt.Graphics;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -31,7 +33,7 @@ public class FrmClientes extends javax.swing.JInternalFrame {
         quitarFondoBoton(bntAgregarC);
         quitarFondoBoton(btnActualizarC);
         quitarFondoBoton(btnBuscarC);
-        quitarFondoBoton(btnListarC);
+        quitarFondoBoton(btnLimpiarC);
         quitarFondoBoton(btnEliminarC);
          
     }
@@ -65,14 +67,12 @@ public class FrmClientes extends javax.swing.JInternalFrame {
         bntAgregarC = new javax.swing.JButton();
         btnActualizarC = new javax.swing.JButton();
         btnBuscarC = new javax.swing.JButton();
-        btnListarC = new javax.swing.JButton();
+        btnLimpiarC = new javax.swing.JButton();
         txtNombreC = new javax.swing.JTextField();
         txtIdC = new javax.swing.JTextField();
         txtFechaNanC = new javax.swing.JTextField();
         txtTelefonoC = new javax.swing.JTextField();
         txtCorreoC = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tablaClientes = new javax.swing.JTable();
         btnEliminarC = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtEdadC = new javax.swing.JTextField();
@@ -159,35 +159,12 @@ public class FrmClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnListarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lista.png"))); // NOI18N
-
-        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Identificacion", "Nombre", "Fecha de Nacimiento", "Telefono", "Correo"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        btnLimpiarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/limpio.png"))); // NOI18N
+        btnLimpiarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarCActionPerformed(evt);
             }
         });
-        jScrollPane3.setViewportView(tablaClientes);
-        if (tablaClientes.getColumnModel().getColumnCount() > 0) {
-            tablaClientes.getColumnModel().getColumn(0).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(1).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(2).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(3).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         btnEliminarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/borrarUsuario.png"))); // NOI18N
         btnEliminarC.addActionListener(new java.awt.event.ActionListener() {
@@ -199,6 +176,11 @@ public class FrmClientes extends javax.swing.JInternalFrame {
         jLabel7.setText("Edad");
 
         txtEdadC.setEditable(false);
+        txtEdadC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadCActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -209,13 +191,12 @@ public class FrmClientes extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(bntAgregarC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnActualizarC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnBuscarC, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnListarC, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnLimpiarC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtNombreC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtIdC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtFechaNanC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtTelefonoC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtCorreoC, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnEliminarC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtEdadC, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -227,63 +208,56 @@ public class FrmClientes extends javax.swing.JInternalFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(bntAgregarC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(81, 81, 81)
-                                .addComponent(btnActualizarC))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtIdC, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(btnEliminarC)
-                                .addGap(66, 66, 66)
-                                .addComponent(btnBuscarC)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnListarC)
-                                .addGap(78, 78, 78))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFechaNanC, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTelefonoC, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCorreoC, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdC, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(bntAgregarC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnActualizarC)
+                        .addGap(54, 54, 54)
+                        .addComponent(btnEliminarC)))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtFechaNanC, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEdadC, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(txtTelefonoC, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnBuscarC)
+                        .addGap(73, 73, 73)
+                        .addComponent(btnLimpiarC))))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtCorreoC, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEdadC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
                 .addGap(20, 20, 20)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
@@ -301,16 +275,14 @@ public class FrmClientes extends javax.swing.JInternalFrame {
                     .addComponent(txtEdadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnListarC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLimpiarC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bntAgregarC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnActualizarC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(btnBuscarC)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnEliminarC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(128, 128, 128))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -347,146 +319,97 @@ public class FrmClientes extends javax.swing.JInternalFrame {
     private void bntAgregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAgregarCActionPerformed
         // TODO add your handling code here:
                                                      
-     if(!this.txtIdC.getText().isEmpty()&&!this.txtFechaNanC.getText().isEmpty()
-                &&!this.txtTelefonoC.getText().isEmpty()&&!this.txtNombreC.getText().isEmpty()
-                &&!this.txtCorreoC.getText().isEmpty()){
-                DateTimeFormatter formt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-               Cliente cli = new Cliente(txtIdC.getText(),txtNombreC.getText(),LocalDate.parse(txtFechaNanC.getText(), formt),
-                    txtTelefonoC.getText(),txtCorreoC.getText());
-               listaClientes.agregarCliente(cli);
-               ClearTxt();
-               JOptionPane.showMessageDialog(null,"El cliente se agrego de forma exitosa","Guardado",JOptionPane.WARNING_MESSAGE);
+                                                      
+    if(!this.txtIdC.getText().isEmpty()&&!this.txtFechaNanC.getText().isEmpty()
+            &&!this.txtTelefonoC.getText().isEmpty()&&!this.txtNombreC.getText().isEmpty()
+            &&!this.txtCorreoC.getText().isEmpty()){
+        DateTimeFormatter formt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaNacimiento = LocalDate.parse(txtFechaNanC.getText(), formt);
+        Cliente cli = new Cliente(txtIdC.getText(),txtNombreC.getText(),fechaNacimiento,
+                txtTelefonoC.getText(),txtCorreoC.getText(), 0); // Inicializa edad en 0
+        cli.setEdad(cli.calcularEdad()); // Calcula la edad del cliente
+        listaClientes.agregarCliente(cli);
+        ClearTxt();
+        JOptionPane.showMessageDialog(null,"El cliente se agrego de forma exitosa","Guardado",JOptionPane.WARNING_MESSAGE);
 
-        }else{
-            JOptionPane.showMessageDialog(null,"Las casillas no pueden estar vacias","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
-        }
-        
-     /*                                                
-    int identificacion = Integer.parseInt(txtIdC.getText());
-    String nombre = txtNombreC.getText();
-    LocalDate fechaNacimiento = LocalDate.parse(txtFechaNanC.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-    String telefono = txtTelefonoC.getText();
-    String correo = txtCorreoC.getText();
+    }else{
+        JOptionPane.showMessageDialog(null,"Las casillas no pueden estar vacias","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+    }
     
-    // Calcular la edad
-    LocalDate hoy = LocalDate.now();
-    Period periodo = Period.between(fechaNacimiento, hoy);
-    int edad = periodo.getYears();
-    
-    // Crear un objeto Cliente y asignarle los valores
-    Cliente cliente = new Cliente(identificacion,  nombre,  fechaNacimiento,  telefono,  correo,  edad);
-    ListaCliente lista = new ListaCliente();
-    lista.agregarCliente(cliente);
-    
-    // Agregar el cliente a la tabla
-    DefaultTableModel modelo = (DefaultTableModel) tablaClientes.getModel();
-    modelo.setRowCount(0);
-    Object[] fila = new Object[modelo.getColumnCount()];
-    fila[0] = cliente.getIdentificacion();
-    fila[1] = cliente.getNombre();
-    fila[2] = cliente.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-    fila[3] = cliente.getTelefono();
-    fila[4] = cliente.getCorreo();
-    modelo.addRow(fila);
-
-    
-    JOptionPane.showMessageDialog(this, "Se agregó el cliente ");
-    txtIdC.setText("");
-    txtNombreC.setText("");
-    txtFechaNanC.setText("");
-    txtTelefonoC.setText("");
-    txtCorreoC.setText("");
-*/
     }//GEN-LAST:event_bntAgregarCActionPerformed
 
     private void btnActualizarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCActionPerformed
         // TODO add your handling code here:
-        /*int filaSeleccionada = tablaClientes.getSelectedRow();
-        if (filaSeleccionada != -1) {
-            // Obtener los valores actuales de los campos de texto
-            String telefono = txtTelefonoC.getText();
-            String correo = txtCorreoC.getText();
+        
+        
+        if (!this.txtIdC.getText().isEmpty() && !this.txtTelefonoC.getText().isEmpty() && !this.txtCorreoC.getText().isEmpty()) {
+        String identificacion = txtIdC.getText();
+        String nuevoTelefono = txtTelefonoC.getText();
+        String nuevoCorreo = txtCorreoC.getText();
+        
+        // Verificar si el cliente existe
+        if (listaClientes.buscarCliente(identificacion) != null) {
+            listaClientes.actualizarCliente(identificacion, nuevoTelefono, nuevoCorreo);
+            JOptionPane.showMessageDialog(null, "Cliente actualizado correctamente", "Actualización Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        } else { 
+            JOptionPane.showMessageDialog(null, "Lo siento el Cliente no existe", "Vuelve a intentar", JOptionPane.INFORMATION_MESSAGE);
+        }    
+        ClearTxt(); // Limpiar los campos
+    } else {
+        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Información Incorrecta", JOptionPane.WARNING_MESSAGE);
+    }
 
-            // Actualizar la fila seleccionada
-            DefaultTableModel modelo = (DefaultTableModel) tablaClientes.getModel();
-            modelo.setValueAt(telefono, filaSeleccionada, 3);
-            modelo.setValueAt(correo, filaSeleccionada, 4);
-
-            // Limpiar los campos de texto
-            txtTelefonoC.setText("");
-            txtCorreoC.setText("");
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila para actualizar");
-        }*/
+     
     }//GEN-LAST:event_btnActualizarCActionPerformed
     
     private void btnEliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCActionPerformed
         // TODO add your handling code here:
         
-          // Obtener la fila seleccionada
-       /* int filaSeleccionada = tablaClientes.getSelectedRow();
-        if (filaSeleccionada != -1) {
-            // Obtener el ID del cliente seleccionado
-            int idCliente = (int) tablaClientes.getValueAt(filaSeleccionada, 0);
-
+        if(!this.txtIdC.getText().isEmpty()){
             try {
-                // Eliminar el cliente
-                
-                listaClientes.eliminarCliente(idCliente);
-
-                // Eliminar la fila seleccionada
-                DefaultTableModel modelo = (DefaultTableModel) tablaClientes.getModel();
-                modelo.removeRow(filaSeleccionada);
-                JOptionPane.showMessageDialog(null, "Cliente Eliminado");
-                // Limpiar los campos de texto
-                txtTelefonoC.setText("");
-                txtCorreoC.setText("");
+                listaClientes.eliminarCliente(this.txtIdC.getText());
             } catch (Exception ex) {
-                // Mostrar mensaje de error si el cliente tiene paquetes en tránsito
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                Logger.getLogger(FrmClientes.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar");
-        }*/
-    
+             ClearTxt();
+             JOptionPane.showMessageDialog(null, "Se a eliminado cliente", "Elminando", JOptionPane.ERROR_MESSAGE);
+
+        }else{
+             JOptionPane.showMessageDialog(null,"La cedula no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnEliminarCActionPerformed
 
     private void btnBuscarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCActionPerformed
         // TODO add your handling code here:
           
-           /*int idBuscar = Integer.parseInt(txtIdC.getText());
-
-                // Buscar el cliente en la lista
-                Cliente cliente = listaClientes.buscarCliente(idBuscar);
-
-                if (cliente != null) {
-                    // Mostrar los detalles del cliente en la tabla
-                    DefaultTableModel modelo = (DefaultTableModel) tablaClientes.getModel();
-                    modelo.setRowCount(0); // Limpiar la tabla
-                    modelo.addRow(new Object[]{
-                        cliente.getIdentificacion(),
-                        cliente.getNombre(),
-                        cliente.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                        cliente.getTelefono(),
-                        cliente.getCorreo()
-                    });
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontró el cliente con ID " + idBuscar);
-                }*/
-           
-           if(!this.txtIdC.getText().isEmpty()&& listaClientes.agregarCliente(this.txtIdC.getText())!=null){
-            Cliente cli = listaClientes.buscarCliente(this.txtIdC.getText());
+     if(!this.txtIdC.getText().isEmpty()){
+        Cliente cli = listaClientes.buscarCliente(this.txtIdC.getText());
+        if(cli != null){
             this.txtCorreoC.setText(cli.getCorreo());
             this.txtFechaNanC.setText(String.valueOf(cli.getFechaNacimiento()));
             this.txtIdC.setText(String.valueOf(cli.getIdentificacion()));
             this.txtNombreC.setText(cli.getNombre());
             this.txtTelefonoC.setText(cli.getTelefono());
+            this.txtEdadC.setText(String.valueOf(cli.getEdad())); // Mostrar la edad del cliente
+        }else{
             JOptionPane.showMessageDialog(null,"La cedula no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+        }
+    }else{
+        JOptionPane.showMessageDialog(null,"Ingrese la cedula del cliente","Información requerida",JOptionPane.WARNING_MESSAGE);
+    }
+          
            
-            }else{
-            JOptionPane.showMessageDialog(null,"Ingrese la cedula del cliente","Información requerida",JOptionPane.WARNING_MESSAGE);
-            }
+           
     }//GEN-LAST:event_btnBuscarCActionPerformed
+
+    private void btnLimpiarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCActionPerformed
+        // TODO add your handling code here:
+        ClearTxt();
+    }//GEN-LAST:event_btnLimpiarCActionPerformed
+
+    private void txtEdadCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadCActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -494,7 +417,7 @@ public class FrmClientes extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizarC;
     private javax.swing.JButton btnBuscarC;
     private javax.swing.JButton btnEliminarC;
-    private javax.swing.JButton btnListarC;
+    private javax.swing.JButton btnLimpiarC;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -506,10 +429,8 @@ public class FrmClientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable tablaClientes;
     private javax.swing.JTextField txtCorreoC;
     private javax.swing.JTextField txtEdadC;
     private javax.swing.JTextField txtFechaNanC;
