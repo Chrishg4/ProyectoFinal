@@ -4,16 +4,24 @@
  */
 package Paquetes;
 
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
-
+/**
+ *
+ * @author ilope
+ */
 public class FrmPaquetes extends javax.swing.JInternalFrame {
-
-    ListaPaquetes listPaquetes = new ListaPaquetes();
+    private ListaPaquetes listaPaquetes;
+    /**
+     * Creates new form FrmPaquetes
+     */
     public FrmPaquetes() {
+        this.listaPaquetes= listaPaquetes;
         initComponents();
+        listaPaquetes = new ListaPaquetes();
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +52,14 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         txtDestinatarioNombre = new javax.swing.JTextField();
         txtDestinatarioCedula = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaPaquetes = new javax.swing.JTextArea();
         btnEliminar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setForeground(new java.awt.Color(102, 102, 102));
 
@@ -61,7 +76,7 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
-        jLabel4.setText("Peso");
+        jLabel4.setText("Peso(Kg)");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel5.setText("Cedula del Destinatario");
@@ -108,12 +123,35 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel8.setText("Nombre del Destinatario");
 
+        txtAreaPaquetes.setEditable(false);
+        txtAreaPaquetes.setBackground(new java.awt.Color(0, 0, 0));
+        txtAreaPaquetes.setColumns(20);
+        txtAreaPaquetes.setFont(new java.awt.Font("HP Simplified Hans", 1, 14)); // NOI18N
+        txtAreaPaquetes.setForeground(new java.awt.Color(255, 255, 255));
+        txtAreaPaquetes.setRows(5);
+        jScrollPane1.setViewportView(txtAreaPaquetes);
+
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/borrar-usuario.png"))); // NOI18N
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
+        jLabel9.setText("Agregar");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
+        jLabel10.setText("Eliminar");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
+        jLabel11.setText("Actualizar");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
+        jLabel12.setText("Buscar");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
+        jLabel13.setText("Mostrar");
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtRemitenteNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -134,7 +172,13 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtDestinatarioNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtDestinatarioCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -153,10 +197,10 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
                         .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(23, 23, 23)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
@@ -172,18 +216,29 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
                                         .addGap(62, 62, 62)
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btnActualizar)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel11)))))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGap(90, 90, 90)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtRemitenteCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                                 .addComponent(txtRemitenteNombre))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(100, 100, 100)
-                                .addComponent(btnBuscar)))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(100, 100, 100))
+                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(btnBuscar))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -192,11 +247,14 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
                                 .addComponent(txtDestinatarioCedula))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnMostrarTodos)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel8)
+                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel13)
+                                        .addComponent(btnMostrarTodos)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDestinatarioNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18))
+            .addComponent(jScrollPane1)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,14 +281,29 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
+                .addGap(47, 47, 47)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel12)
+                        .addComponent(jLabel13))
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel11)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMostrarTodos))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnActualizar)
+                            .addComponent(btnAgregar)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(btnMostrarTodos)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,66 +325,140 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        
+        eliminarPaquete();  
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (!this.txtCodigo.getText().isEmpty() && !this.txtDescripcion.getText().isEmpty()
-        && !this.txtPeso.getText().isEmpty() && !this.txtRemitenteNombre.getText().isEmpty()
-        && !this.txtDestinatarioNombre.getText().isEmpty()) {
-        DateTimeFormatter formt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        /*Paquete paquete = new Paquete(txtCodigo.getText(), txtDescripcion.getText(), 
-            Double.parseDouble(txtPeso.getText()), Double.parseDouble(txtPrecio.getText()), 
-            LocalDate.parse(txtFechaEntrega.getText(), formt));*/
-            //listPaquetes.agregarPaquete(paquete);
-            ClearTxt();
-            JOptionPane.showMessageDialog(null, "Se agrego paquete de forma exitosa", "Se agrego correctamente", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Las casillas no pueden estar vacias", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-        }
+        agregarPaquete();         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-        
+        actualizarPaquete();
+        mostrarTodosLosPaquetes();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        /*try {
-            if (!this.txtCodigo.getText().isEmpty()) {
-                Paquete paquete = buscarPaquete(this.txtCodigo.getText());
-
-                this.txtCodigo.setText(paquete.getCodigo());
-                this.txtDescripcion.setText(paquete.getDescripcion());
-                this.txtPeso.setText(String.valueOf(paquete.getPeso()));
-                this.txtDestino.setText(paquete.getDestino());
-                this.txtFechaEnvio.setText(String.valueOf(paquete.getFechaEnvio()));
-                this.txtEstado.setText(paquete.getEstado());
-
-        } else {
-            JOptionPane.showMessageDialog(null, "El código no puede estar vacío, ingrese de nuevo", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
-        }
-            } catch (NoSuchElementException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Paquete no encontrado", JOptionPane.WARNING_MESSAGE);
-            }*/
-
+        buscarPaquete();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnMostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosActionPerformed
-        // TODO add your handling code here:
+        mostrarTodosLosPaquetes();
+        
     }//GEN-LAST:event_btnMostrarTodosActionPerformed
-        public void ClearTxt(){
-        this.txtCodigo.setText("");
-        this.txtRemitenteCedula.setText("");
-        this.txtDestinatarioCedula.setText("");
-        this.txtPeso.setText("");
-        this.txtRemitenteNombre.setText("");
-        this.txtDestinatarioNombre.setText("");
-        this.txtDescripcion.setText("");
-   }
+    
 
+    
+    
+   private void agregarPaquete() {
+        try {
+            String codigo = txtCodigo.getText();
+            String descripcion = txtDescripcion.getText();
+            double peso = Double.parseDouble(txtPeso.getText());
+            String remitenteCedula = txtRemitenteCedula.getText();
+            String remitenteNombre = txtRemitenteNombre.getText();
+            String destinatarioCedula = txtDestinatarioCedula.getText();
+            String destinatarioNombre = txtDestinatarioNombre.getText();
+
+            if (!isNumeric(remitenteCedula) || !isNumeric(destinatarioCedula)) {
+                JOptionPane.showMessageDialog(this, "Las cédulas deben ser numéricas.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            if (!isText(remitenteNombre) || !isText(destinatarioNombre)) {
+                JOptionPane.showMessageDialog(this, "Los nombres deben ser texto.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Paquete paquete = new Paquete(codigo, descripcion, peso, remitenteCedula, remitenteNombre, destinatarioCedula, destinatarioNombre);
+            listaPaquetes.agregarPaquete(paquete);
+            JOptionPane.showMessageDialog(this, "Paquete agregado exitosamente.");
+            limpiarCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "El codigo y peso deben ser un dato númerico.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void actualizarPaquete() {
+        try {
+        
+        String codigo = txtCodigo.getText();
+        String nuevaDescripcion = txtDescripcion.getText();
+        double nuevoPeso = Double.parseDouble(txtPeso.getText()); 
+        String nuevoDestinatarioCedula = txtDestinatarioCedula.getText();
+        String nuevoDestinatarioNombre = txtDestinatarioNombre.getText();
+
+        if (codigo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese el código del paquete.");
+            return;
+        }
+
+        listaPaquetes.actualizarPaquete(codigo, nuevaDescripcion, nuevoPeso, nuevoDestinatarioCedula, nuevoDestinatarioNombre);
+
+        limpiarCampos();
+
+        
+        mostrarTodosLosPaquetes();
+        
+        JOptionPane.showMessageDialog(null, "Paquete actualizado exitosamente.");
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "El peso debe ser un número válido.");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar el paquete: " + e.getMessage());
+    }
+    }
+
+    private void eliminarPaquete() {
+        try {
+            String codigo = txtCodigo.getText();
+            listaPaquetes.eliminarPaquete(codigo);
+            JOptionPane.showMessageDialog(this, "Paquete eliminado exitosamente.");
+            limpiarCampos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void buscarPaquete() {
+        String codigo = txtCodigo.getText();
+        Paquete paquete = listaPaquetes.buscarPaquete(codigo);
+        if (paquete != null) {
+            txtDescripcion.setText(paquete.getDescripcion());
+            txtPeso.setText(String.valueOf(paquete.getPeso()));
+            txtRemitenteCedula.setText(paquete.getRemitenteCedula());
+            txtRemitenteNombre.setText(paquete.getRemitenteNombre());
+            txtDestinatarioCedula.setText(paquete.getDestinatarioCedula());
+            txtDestinatarioNombre.setText(paquete.getDestinatarioNombre());
+        } else {
+            JOptionPane.showMessageDialog(this, "Paquete no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void mostrarTodosLosPaquetes() {
+    txtAreaPaquetes.setText(""); 
+    for (Paquete paquete : listaPaquetes.getPaquetes().values()) {
+        txtAreaPaquetes.append(paquete.toString() + "\n");
+    }
+}
+
+    private boolean isNumeric(String str) {
+        return str.matches("\\d+");
+    }
+
+    private boolean isText(String str) {
+        return str.matches("[a-zA-Z ]+");
+    }
+    
+    private void limpiarCampos() {
+        txtCodigo.setText("");
+        txtDescripcion.setText("");
+        txtPeso.setText("");
+        txtRemitenteCedula.setText("");
+        txtRemitenteNombre.setText("");
+        txtDestinatarioCedula.setText("");
+        txtDestinatarioNombre.setText("");
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
@@ -320,6 +467,10 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnMostrarTodos;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -327,6 +478,9 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtAreaPaquetes;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtDestinatarioCedula;

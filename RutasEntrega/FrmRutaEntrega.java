@@ -48,7 +48,6 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
         txtCodigoRuta = new javax.swing.JTextField();
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
 
@@ -171,7 +170,7 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         if (!this.txtCodigoRuta.getText().isEmpty()) {
-        if (listaEntrega.eliminarRuta(this.txtNombre.getText())) {
+        if (listaEntrega.eliminarRuta(this.txtCodigoRuta.getText())) {
         ClearTxt();
         JOptionPane.showMessageDialog(null, "Ruta eliminada correctamente", "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         } else {

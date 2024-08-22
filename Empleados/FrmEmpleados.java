@@ -73,7 +73,7 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel6.setText("Telefono");
 
-        btnEliminarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/borrar-usuario.png"))); // NOI18N
+        btnEliminarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/borrarUsuario.png"))); // NOI18N
         btnEliminarEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarEmpActionPerformed(evt);

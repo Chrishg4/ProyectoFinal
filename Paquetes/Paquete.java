@@ -4,7 +4,10 @@
  */
 package Paquetes;
 
-
+/**
+ *
+ * @author ilope
+ */
 public class Paquete {
     private String Codigo;
     private String descripcion;
@@ -93,14 +96,16 @@ public class Paquete {
 
     @Override
     public String toString() {
-        return "Paquete{" + "Codigo=" + Codigo + ", "
-                + "descripcion=" + descripcion + ", peso=" + peso + 
-                ", remitenteCedula=" + remitenteCedula + 
-                ", remitenteNombre=" + remitenteNombre + 
-                ", destinatarioCedula=" + destinatarioCedula + 
-                ", destinatarioNombre=" + destinatarioNombre + 
-                ", estado=" + estado + '}';
-    }
-    
-    
+    return String.format(
+        "Paquete--Codigo: %s,--Descripcion: %s,--Peso: %.2f,--Remitente Cedula: %s,--Remitente Nombre: %s,--Destinatario Cedula: %s,--Destinatario Nombre: %s,--Estado: %s",
+        Codigo,
+        descripcion,
+        peso,
+        remitenteCedula,
+        remitenteNombre,
+        destinatarioCedula,
+        destinatarioNombre,
+        estado
+    );
+}
 }
