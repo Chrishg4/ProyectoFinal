@@ -12,14 +12,14 @@ import java.time.Period;
  * @author chris
  */
 public class Cliente {
-    private int id;
+    private String id;
     private String nombre;
     private LocalDate fechaNac;
     private String telefono;
     private String correo;
     private int edad; 
 
-    public int getIdentificacion() {
+    public String getIdentificacion() {
         return id;
     }
 
@@ -35,7 +35,7 @@ public class Cliente {
         return telefono;
     }
 
-    public String getCorreoElectronico() {
+    public String getCorreo() {
         return correo;
     }
     
@@ -43,7 +43,7 @@ public class Cliente {
         return edad;
     }
 
-    public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.id = identificacion;
     }
 
@@ -67,17 +67,17 @@ public class Cliente {
         this.edad = edad;
     }
 
-    public Cliente(int id, String nombre, LocalDate fechaNac, String telefono, String correo, int edad) {
+    public Cliente(String id, String nombre, LocalDate fechaNac, String telefono, String correo /*int edad*/) {
         this.id = id;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
         this.telefono = telefono;
         this.correo = correo;
-        this.edad = edad;
+        /*this.edad = edad;*/
     }
 
     public Cliente() {
-        this(0,"",LocalDate.now(),"","",0);
+        this("","",LocalDate.now(),"",""/*0*/);
     }
     
     

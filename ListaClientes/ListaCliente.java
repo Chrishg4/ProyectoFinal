@@ -14,12 +14,6 @@ import java.util.ArrayList;
 public class ListaCliente {
      private ArrayList<Cliente> listaClientes = new ArrayList<>();
 
-    public void setListaClientes(ArrayList<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
-    }
-     
-     
-
     public ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
@@ -28,7 +22,7 @@ public class ListaCliente {
         listaClientes.add(cliente);
     }
 
-    public void actualizarCliente(int id, String telefono, String correo) {
+    public void actualizarCliente(String id, String telefono, String correo) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getIdentificacion() == id) {
                 cliente.setTelefono(telefono);
@@ -38,7 +32,7 @@ public class ListaCliente {
         }
     }
 
-    public void eliminarCliente(int id) throws Exception {
+    public void eliminarCliente(String id) throws Exception {
         for (Cliente cliente : listaClientes) {
             if (cliente.getIdentificacion() == id) {
                 if (tienePaquetesEnTransito(cliente)) {
@@ -50,14 +44,14 @@ public class ListaCliente {
         }
     }
 
-    public Cliente buscarCliente(int id) {
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getIdentificacion() == id) {
-                return cliente;
-            }
+    public Cliente buscarCliente(String id) {
+    for (Cliente cliente : listaClientes) {
+        if (cliente.getIdentificacion().equals(id)) {
+            return cliente;
         }
-        return null;
     }
+    return null;
+}
 
     private boolean tienePaquetesEnTransito(Cliente cliente) {
         // lista de paquetes
