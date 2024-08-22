@@ -8,9 +8,11 @@ import Empleados.FrmEmpleados;
 import ListaClientes.FrmClientes;
 import RutasEntrega.FrmRutaEntrega;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  *
@@ -28,6 +30,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         quitarFondoBoton(btnRutas);
         quitarFondoBoton(btnPaquete);
         quitarFondoBoton(btnEnvio);
+        
+        // Configuración del frame
+        setTitle("Mi Frame");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Establecer tamaño fijo
+        setPreferredSize(new Dimension(1050, 650)); // Ancho x Alto
+
+        // Ajustar el frame al tamaño establecido
+        pack();
+
+        // Centrar el frame en la pantalla
+        setLocationRelativeTo(null);
+
+        // Mostrar el frame
+        setVisible(true);
+        
+        jPanel1.setOpaque(false);
+        jPanel1.setBackground(new Color(0, 0, 0, 0));
     }
 
     /**
@@ -45,20 +66,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 g.drawImage (icon.getImage(), 0, 0, getWidth(),getHeight(),this);
             }
         };
+        jPanel1 = new javax.swing.JPanel();
         btnClientes = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btnEmpleado = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         btnRutas = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         btnPaquete = new javax.swing.JButton();
         btnEnvio = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionClientes.png"))); // NOI18N
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +90,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnClientesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Gestionar Clientes");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
         btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/gestionEmpleado.png"))); // NOI18N
         btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +103,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnEmpleadoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Gestionar Empleados");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
 
         btnRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionRuta.png"))); // NOI18N
         btnRutas.addActionListener(new java.awt.event.ActionListener() {
@@ -80,96 +116,51 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnRutasActionPerformed(evt);
             }
         });
-
-        btnPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionPaquetes.png"))); // NOI18N
-
-        btnEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionEnvio.png"))); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Gestion de Empresa");
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Gestionar Clientes");
+        jPanel1.add(btnRutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Gestionar Ruta");
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Gestionar Empleados");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Gestionar Paquetes");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
+
+        btnPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionPaquetes.png"))); // NOI18N
+        jPanel1.add(btnPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
+
+        btnEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionEnvio.png"))); // NOI18N
+        jPanel1.add(btnEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Gestionar Envio");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, -1, -1));
 
-        DeskMenPrinc.setLayer(btnClientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(btnEmpleado, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(btnRutas, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(btnPaquete, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(btnEnvio, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenPrinc.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel1.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Gestion de Empresa");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 65, -1, -1));
+
+        DeskMenPrinc.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout DeskMenPrincLayout = new javax.swing.GroupLayout(DeskMenPrinc);
         DeskMenPrinc.setLayout(DeskMenPrincLayout);
         DeskMenPrincLayout.setHorizontalGroup(
             DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addGap(231, 231, 231)
-                .addComponent(jLabel1))
-            .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(btnClientes)
-                .addGap(64, 64, 64)
-                .addComponent(btnEmpleado)
-                .addGap(54, 54, 54)
-                .addComponent(btnRutas)
-                .addGap(44, 44, 44)
-                .addComponent(btnPaquete)
-                .addGap(54, 54, 54)
-                .addComponent(btnEnvio))
-            .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel2)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel4)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel5)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel6))
+                .addGap(83, 83, 83)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         DeskMenPrincLayout.setVerticalGroup(
             DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeskMenPrincLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel1)
-                .addGap(93, 93, 93)
-                .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClientes)
-                    .addComponent(btnEmpleado)
-                    .addComponent(btnRutas)
-                    .addComponent(btnPaquete)
-                    .addComponent(btnEnvio))
-                .addGap(18, 18, 18)
-                .addGroup(DeskMenPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)))
+                .addGap(38, 38, 38)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,5 +256,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
