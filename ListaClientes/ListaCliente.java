@@ -5,7 +5,11 @@
 package ListaClientes;
 
 import Clientes.Cliente;
+import Paquetes.ListaPaquetes;
+import Paquetes.Paquete;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 /**
  *
@@ -56,10 +60,12 @@ public class ListaCliente {
 }
 
     private boolean tienePaquetesEnTransito(Cliente cliente) {
-        // lista de paquetes
-        // ...
-        return false; // No tiene
+    ListaPaquetes paquet = new ListaPaquetes();
+    HashMap<String, Paquete> paquetesCliente = paquet.getPaquetes();
+    for (Paquete paquete : paquetesCliente.values()) {
+        if ("En transito".equalsIgnoreCase(paquete.getEstado())) {
+            return true;
+        }
     }
-    
+    return false;
 }
-

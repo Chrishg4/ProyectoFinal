@@ -16,7 +16,9 @@ public class Paquete {
     private String remitenteNombre;
     private String destinatarioCedula;
     private String destinatarioNombre;
-    private String estado;
+    private char estado;
+    
+    public static final char Almacenado='A',Transitando='T',Entregado='E';
 
 
     public String getCodigo() {
@@ -47,9 +49,19 @@ public class Paquete {
         return destinatarioNombre;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getEstado () {
+    return switch (estado) {
+        case Almacenado -> "En almacen";
+        case Transitando -> "En transito";
+        case Entregado -> "Paquete entregado";
+        default -> "Estado no reconocido";
+    };
     }
+
+
+        
+
+    
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -76,10 +88,12 @@ public class Paquete {
     }
     
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado (char estado) {
+    estado = Character.toUpperCase(estado);
+    if (estado == 'A' || estado == 'T' || estado == 'E'){
+    this.estado = estado;
     }
-
+    }
     public Paquete(String Codigo, String descripcion, double peso, String remitenteCedula, String remitenteNombre, String destinatarioCedula, String destinatarioNombre) 
     {
         this.Codigo = Codigo;
@@ -89,7 +103,7 @@ public class Paquete {
         this.remitenteNombre = remitenteNombre;
         this.destinatarioCedula = destinatarioCedula;
         this.destinatarioNombre = destinatarioNombre;
-        this.estado = "En almacen";
+        this.estado = estado;
     }
 
     

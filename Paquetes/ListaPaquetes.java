@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @author ilope
  */
 public class ListaPaquetes {
-    private HashMap<String, Paquete> paquetes;
+    public HashMap<String, Paquete> paquetes;
 
     public ListaPaquetes() {
         paquetes = new HashMap<>();
