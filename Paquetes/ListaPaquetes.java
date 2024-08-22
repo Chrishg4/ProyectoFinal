@@ -22,6 +22,7 @@ public class ListaPaquetes {
     }
 
     
+    
     public void agregarPaquete(Paquete paquete) {
         if (paquetes.containsKey(paquete.getCodigo())) {
             System.out.println("El paquete con el código " + paquete.getCodigo() + " ya existe.");

@@ -329,7 +329,7 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        agregarPaquete();         
+        AgregarPaquete();         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -349,7 +349,7 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
 
     
     
-   private void agregarPaquete() {
+   private void AgregarPaquete() {
         try {
             String codigo = txtCodigo.getText();
             String descripcion = txtDescripcion.getText();
@@ -407,6 +407,7 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
     }
     }
 
+    
     private void eliminarPaquete() {
         try {
             String codigo = txtCodigo.getText();
