@@ -4,9 +4,7 @@
  */
 package RutasEntrega;
 
-import Empleados.Empleado;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -206,16 +204,16 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
     //txtResultados.setText("Ruta agregada: " + nuevaRuta.toString());
 
     // Limpiar los campos de texto
-    txtCodigoRuta.setText("");
+    /*txtCodigoRuta.setText("");
     txtNombre.setText("");
     txtDescripcion.setText("");
-    txtDestino.setText(""); 
+    txtDestino.setText(""); */
 
     // hacer invisibles los campos de texto y etiquetas nuevamente (si uno quiere)
-    txtCodigoRuta.setVisible(false);
+    /*txtCodigoRuta.setVisible(false);
     txtNombre.setVisible(false);
     txtDescripcion.setVisible(false);
-    txtDestino.setVisible(false);
+    txtDestino.setVisible(false);*/
 
     /*lblCodigoRuta.setVisible(false);
     lblNombre.setVisible(false);
