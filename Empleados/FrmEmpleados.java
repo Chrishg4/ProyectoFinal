@@ -53,6 +53,10 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
         txtSalario = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Administración de Empleados");
@@ -286,7 +290,7 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
                ClearTxt();
                
         }else{
-            JOptionPane.showMessageDialog(null,"La cedula no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Las casillas no pueden estar vacias","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
         }
      
     }//GEN-LAST:event_btnAgregarEmpActionPerformed
@@ -322,6 +326,29 @@ public class FrmEmpleados extends javax.swing.JInternalFrame {
     private void btnActualizarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpActionPerformed
         // TODO add your handling code here:
         
+        if (!this.txtIdentificacion.getText().isEmpty() && !this.txtNombre.getText().isEmpty()
+        && !this.txtFechaNacimiento.getText().isEmpty() && !this.txtPuesto.getText().isEmpty()
+        && !this.txtTelefono.getText().isEmpty() && !this.txtCorreo.getText().isEmpty() && !this.txtSalario.getText().isEmpty()) {
+    
+            String id = txtIdentificacion.getText();
+            String nuevoTelefono = txtTelefono.getText();
+            String nuevoCorreo = txtCorreo.getText();
+            String nuevoPuesto = txtPuesto.getText();
+            String nuevoSalario = txtSalario.getText();
+
+    if (empleados.buscarEmpleado(id) != null) {
+        empleados.actualizarEmpleado(id, nuevoTelefono, nuevoCorreo, nuevoPuesto, nuevoSalario);
+        JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente", "Actualización Exitosa", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        
+        JOptionPane.showMessageDialog(null, "Lo siento el Empleado no existe", "Vuelve a intentar", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    ClearTxt(); 
+} else {
+    JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Información Incorrecta", JOptionPane.WARNING_MESSAGE);
+}
+
     }//GEN-LAST:event_btnActualizarEmpActionPerformed
 
    public void ClearTxt(){

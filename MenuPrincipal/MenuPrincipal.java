@@ -204,7 +204,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
-    FrmRutaEntrega internalFrame = new FrmRutaEntrega();
+    FrmEmpleados internalFrame = new FrmEmpleados();
     DeskMenPrinc.add(internalFrame);
     internalFrame.setVisible(true);
 
@@ -212,7 +212,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadoActionPerformed
 
     private void btnRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasActionPerformed
-    FrmEmpleados internalFrame = new FrmEmpleados();
+    FrmRutaEntrega internalFrame = new FrmRutaEntrega();
     DeskMenPrinc.add(internalFrame);
     internalFrame.setVisible(true); 
     }//GEN-LAST:event_btnRutasActionPerformed

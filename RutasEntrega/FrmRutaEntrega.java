@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class FrmRutaEntrega extends javax.swing.JInternalFrame {
 ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
-    //private ListaRutaEntrega listaRutaEntrega; 
+
 
     /**
      * Creates new form FrmRutaEntrega
@@ -21,8 +21,6 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
     public FrmRutaEntrega() {
         initComponents();
         
-        
-        //listaRutaEntrega = new ListaRutaEntrega();
     }
 
     /**
@@ -36,19 +34,23 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel4 = new javax.swing.JLabel();
-        txtCodigoRuta = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        txtDescripcion = new javax.swing.JTextField();
-        txtDestino = new javax.swing.JTextField();
-        txtResultados = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtLimpiar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtDestino = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
+        txtCodigoRuta = new javax.swing.JTextField();
+
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jDesktopPane1.setBackground(new java.awt.Color(153, 153, 153));
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,79 +59,45 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
         jLabel4.setText("Nombre");
         jDesktopPane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
 
-        txtCodigoRuta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCodigoRuta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoRutaActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(txtCodigoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, 30));
-
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setText("Eliminar ruta");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 70, 40));
+        jDesktopPane1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 110, 40));
 
-        btnBuscar.setText("Buscar");
+        btnBuscar.setText("Buscar ruta");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 70, 40));
+        jDesktopPane1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 100, 40));
 
-        txtDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
+        txtLimpiar.setText("Limpiar");
+        txtLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
+                txtLimpiarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 120, 30));
+        jDesktopPane1.add(txtLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, -1, 40));
 
-        txtDestino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtDestino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDestinoActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(txtDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 120, 30));
-
-        txtResultados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtResultadosActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(txtResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 350, 80));
-
-        jButton1.setText("Guardar");
-        jDesktopPane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, 40));
-
-        btnActualizar.setText("Actualizar");
+        btnActualizar.setText("Actualizar Ruta");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, 40));
+        jDesktopPane1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 120, 40));
 
-        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 120, 30));
-
-        btnAgregar.setText("Agregar");
+        btnAgregar.setText("Agregar ruta");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 70, 40));
+        jDesktopPane1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 100, 40));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel5.setText("Codigo Ruta");
@@ -142,12 +110,16 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
         jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel7.setText("Destino");
         jDesktopPane1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 60, -1));
+        jDesktopPane1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 120, -1));
+        jDesktopPane1.add(txtDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 120, -1));
+        jDesktopPane1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 120, -1));
+        jDesktopPane1.add(txtCodigoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,107 +128,93 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    
+    if(!this.txtCodigoRuta.getText().isEmpty()&&!this.txtDescripcion.getText().isEmpty()
+                &&!this.txtNombre.getText().isEmpty()&&!this.txtDestino.getText().isEmpty()){
+                
+               RutaEntrega rut = new RutaEntrega(txtCodigoRuta.getText(),txtNombre.getText(),txtDescripcion.getText(),txtDestino.getText());
+               listaEntrega.agregarRuta(rut);
+               
+               JOptionPane.showMessageDialog(null,"La ruta se agrego con exito","Ruta Agregada",JOptionPane.WARNING_MESSAGE);
 
-    private void txtCodigoRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoRutaActionPerformed
+        }else{
+            JOptionPane.showMessageDialog(null,"La ruta no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
+        }
+        ClearTxt();
+       
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoRutaActionPerformed
+        if (!this.txtCodigoRuta.getText().isEmpty() && !this.txtDescripcion.getText().isEmpty()
+            && !this.txtNombre.getText().isEmpty() && !this.txtDestino.getText().isEmpty()) {
+            String codigoRuta = txtCodigoRuta.getText();
+            String nuevaDescripcion = txtDescripcion.getText();
+            String nuevosDestinos = txtDestino.getText();
+        if (listaEntrega.buscarRuta(codigoRuta) != null) {
+        if (listaEntrega.actualizarRuta(codigoRuta, nuevaDescripcion, nuevosDestinos)) {
+            JOptionPane.showMessageDialog(null, "Ruta actualizada correctamente", "Actualización Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar la ruta", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "La ruta no exite", "Error de registro", JOptionPane.INFORMATION_MESSAGE);
+        }    
+        ClearTxt();
+        } else {
+        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Información Incorrecta", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (!this.txtCodigoRuta.getText().isEmpty()) {
+        if (listaEntrega.eliminarRuta(this.txtNombre.getText())) {
+        ClearTxt();
+        JOptionPane.showMessageDialog(null, "Ruta eliminada correctamente", "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+        JOptionPane.showMessageDialog(null, "El código de ruta no existe, ingrese de nuevo", "Información Incorrecta", JOptionPane.WARNING_MESSAGE);
+        }
+        }else {
+         JOptionPane.showMessageDialog(null, "Debe ingresar un código de ruta", "Campo Vacío", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if (!this.txtCodigoRuta.getText().isEmpty()) {
+
+            RutaEntrega ruta = listaEntrega.buscarRuta(this.txtCodigoRuta.getText());
+            this.txtDescripcion.setText(ruta.getDescripcion());
+            this.txtCodigoRuta.setText(ruta.getCodigoRuta());
+            this.txtNombre.setText(ruta.getNombre());
+            this.txtDestino.setText(ruta.getDestinos());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El código de ruta no existe, ingrese de nuevo", "Información Incorrecta", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimpiarActionPerformed
+        // TODO add your handling code here:
+        ClearTxt();
+    }//GEN-LAST:event_txtLimpiarActionPerformed
     public void ClearTxt(){
        this.txtCodigoRuta.setText("");
        this.txtDescripcion.setText("");
        this.txtDestino.setText("");
        this.txtNombre.setText("");
     }
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       // Hacer visibles los JTextField cuando se presiona el botón 'Agregar'
-    
-
-    // Hacer visibles las etiquetas correspondientes
-    /*lblCodigoRuta.setVisible(true);
-    lblNombre.setVisible(true);
-    lblDescripcion.setVisible(true);
-    lblDestino.setVisible(true);*/
-    
-    
-    if(!this.txtCodigoRuta.getText().isEmpty()&&!this.txtDescripcion.getText().isEmpty()
-                &&!this.txtNombre.getText().isEmpty()&&!this.txtDestino.getText().isEmpty()){
-                
-               RutaEntrega rut = new RutaEntrega(txtCodigoRuta.getText(),txtDescripcion.getText(),txtNombre.getText(),txtDestino.getText());
-               listaEntrega.agregarRuta(rut);
-               ClearTxt();
-               
-        }else{
-            JOptionPane.showMessageDialog(null,"La cedula no existe ingrese de nuevo","informacion incorrecta",JOptionPane.WARNING_MESSAGE);
-        }
-    
- 
-    // Obtener los datos ingresados por el usuario
-    //String codigoRuta = txtCodigoRuta.getText();
-    //String nombre = txtNombre.getText();
-    //String descripcion = txtDescripcion.getText();
-
-    // Crear una nueva instancia de RutaEntrega
-    //RutaEntrega nuevaRuta = new RutaEntrega(codigoRuta, nombre, descripcion);
-
-    // Usar la instancia para agregar la nueva ruta a la lista
-    //listaRutaEntrega.agregarRuta(nuevaRuta);
-
-    // Mostrar la información de la ruta en el área de resultados o en un mensaje
-    //txtResultados.setText("Ruta agregada: " + nuevaRuta.toString());
-
-    // Limpiar los campos de texto
-    /*txtCodigoRuta.setText("");
-    txtNombre.setText("");
-    txtDescripcion.setText("");
-    txtDestino.setText(""); */
-
-    // hacer invisibles los campos de texto y etiquetas nuevamente (si uno quiere)
-    /*txtCodigoRuta.setVisible(false);
-    txtNombre.setVisible(false);
-    txtDescripcion.setVisible(false);
-    txtDestino.setVisible(false);*/
-
-    /*lblCodigoRuta.setVisible(false);
-    lblNombre.setVisible(false);
-    lblDescripcion.setVisible(false);
-    lblDestino.setVisible(false);*/
-       
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
-
-    private void txtDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDestinoActionPerformed
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void txtResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtResultadosActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -265,7 +223,7 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
     private javax.swing.JTextField txtCodigoRuta;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtDestino;
+    private javax.swing.JButton txtLimpiar;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtResultados;
     // End of variables declaration//GEN-END:variables
 }
