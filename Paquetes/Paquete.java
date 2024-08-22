@@ -4,10 +4,7 @@
  */
 package Paquetes;
 
-/**
- *
- * @author ilope
- */
+
 public class Paquete {
     private String Codigo;
     private String descripcion;

@@ -4,15 +4,13 @@
  */
 package Paquetes;
 
-/**
- *
- * @author ilope
- */
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
+
 public class FrmPaquetes extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FrmPaquetes
-     */
+    ListaPaquetes listPaquetes = new ListaPaquetes();
     public FrmPaquetes() {
         initComponents();
     }
@@ -46,8 +44,6 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         txtDestinatarioNombre = new javax.swing.JTextField();
         txtDestinatarioCedula = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaPaquetes = new javax.swing.JTextArea();
         btnEliminar = new javax.swing.JButton();
 
         setForeground(new java.awt.Color(102, 102, 102));
@@ -112,10 +108,6 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel8.setText("Nombre del Destinatario");
 
-        txtAreaPaquetes.setColumns(20);
-        txtAreaPaquetes.setRows(5);
-        jScrollPane1.setViewportView(txtAreaPaquetes);
-
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/borrar-usuario.png"))); // NOI18N
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +134,6 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtDestinatarioNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtDestinatarioCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -196,7 +187,6 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDestinatarioCedula))
@@ -207,7 +197,6 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDestinatarioNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18))
-            .addComponent(jScrollPane1)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,18 +225,12 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnActualizar)
-                            .addComponent(btnAgregar)
-                            .addComponent(btnBuscar)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(btnMostrarTodos)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(btnActualizar)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMostrarTodos))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,21 +257,60 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        
+        if (!this.txtCodigo.getText().isEmpty() && !this.txtDescripcion.getText().isEmpty()
+        && !this.txtPeso.getText().isEmpty() && !this.txtRemitenteNombre.getText().isEmpty()
+        && !this.txtDestinatarioNombre.getText().isEmpty()) {
+        DateTimeFormatter formt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        /*Paquete paquete = new Paquete(txtCodigo.getText(), txtDescripcion.getText(), 
+            Double.parseDouble(txtPeso.getText()), Double.parseDouble(txtPrecio.getText()), 
+            LocalDate.parse(txtFechaEntrega.getText(), formt));*/
+            //listPaquetes.agregarPaquete(paquete);
+            ClearTxt();
+            JOptionPane.showMessageDialog(null, "Se agrego paquete de forma exitosa", "Se agrego correctamente", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Las casillas no pueden estar vacias", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        /*try {
+            if (!this.txtCodigo.getText().isEmpty()) {
+                Paquete paquete = buscarPaquete(this.txtCodigo.getText());
+
+                this.txtCodigo.setText(paquete.getCodigo());
+                this.txtDescripcion.setText(paquete.getDescripcion());
+                this.txtPeso.setText(String.valueOf(paquete.getPeso()));
+                this.txtDestino.setText(paquete.getDestino());
+                this.txtFechaEnvio.setText(String.valueOf(paquete.getFechaEnvio()));
+                this.txtEstado.setText(paquete.getEstado());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El código no puede estar vacío, ingrese de nuevo", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
+        }
+            } catch (NoSuchElementException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Paquete no encontrado", JOptionPane.WARNING_MESSAGE);
+            }*/
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnMostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarTodosActionPerformed
-
+        public void ClearTxt(){
+        this.txtCodigo.setText("");
+        this.txtRemitenteCedula.setText("");
+        this.txtDestinatarioCedula.setText("");
+        this.txtPeso.setText("");
+        this.txtRemitenteNombre.setText("");
+        this.txtDestinatarioNombre.setText("");
+        this.txtDescripcion.setText("");
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -305,8 +327,6 @@ public class FrmPaquetes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtAreaPaquetes;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtDestinatarioCedula;
