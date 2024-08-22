@@ -6,6 +6,7 @@ package MenuPrincipal;
 
 import Empleados.FrmEmpleados;
 import ListaClientes.FrmClientes;
+import Paquetes.FrmPaquetes;
 import RutasEntrega.FrmRutaEntrega;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -129,6 +130,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
 
         btnPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionPaquetes.png"))); // NOI18N
+        btnPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaqueteActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
         btnEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/GestionEnvio.png"))); // NOI18N
@@ -207,6 +213,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     DeskMenPrinc.add(internalFrame);
     internalFrame.setVisible(true); 
     }//GEN-LAST:event_btnRutasActionPerformed
+
+    private void btnPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaqueteActionPerformed
+        // TODO add your handling code here:
+        FrmPaquetes internalFrame = new FrmPaquetes();
+        DeskMenPrinc.add(internalFrame);
+        internalFrame.setVisible(true); 
+    }//GEN-LAST:event_btnPaqueteActionPerformed
 
     /**
      * @param args the command line arguments

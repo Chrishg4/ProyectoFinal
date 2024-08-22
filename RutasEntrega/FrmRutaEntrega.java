@@ -5,6 +5,8 @@
 package RutasEntrega;
 
 
+import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +22,11 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
      */
     public FrmRutaEntrega() {
         initComponents();
-        
+        quitarFondoBoton(btnAgregar);
+        quitarFondoBoton(btnActualizar);
+        quitarFondoBoton(btnEliminar);
+        quitarFondoBoton(btnBuscar);
+        quitarFondoBoton(txtLimpiar);
     }
 
     /**
@@ -46,10 +52,15 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
         txtDestino = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         txtCodigoRuta = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
+        setTitle("Gestion Rutas");
 
         jDesktopPane1.setBackground(new java.awt.Color(153, 153, 153));
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,45 +69,45 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
         jLabel4.setText("Nombre");
         jDesktopPane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
 
-        btnEliminar.setText("Eliminar ruta");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/circulo-cruzado.png"))); // NOI18N
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 110, 40));
+        jDesktopPane1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 50, -1));
 
-        btnBuscar.setText("Buscar ruta");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 100, 40));
+        jDesktopPane1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 50, 40));
 
-        txtLimpiar.setText("Limpiar");
+        txtLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/limpio.png"))); // NOI18N
         txtLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLimpiarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(txtLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, -1, 40));
+        jDesktopPane1.add(txtLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 50, 40));
 
-        btnActualizar.setText("Actualizar Ruta");
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar-flecha.png"))); // NOI18N
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 120, 40));
+        jDesktopPane1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 50, -1));
 
-        btnAgregar.setText("Agregar ruta");
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/viaje-en-coche.png"))); // NOI18N
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 100, 40));
+        jDesktopPane1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 50, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel5.setText("Codigo Ruta");
@@ -114,20 +125,42 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
         jDesktopPane1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 120, -1));
         jDesktopPane1.add(txtCodigoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, -1));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Agregar");
+        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 50, -1));
+
+        jLabel2.setText("Actualizar");
+        jDesktopPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Eliminar");
+        jDesktopPane1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 50, -1));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Buscar");
+        jDesktopPane1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 50, -1));
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Limpiar");
+        jDesktopPane1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 40, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+        private void quitarFondoBoton(JButton boton) {
+    boton.setBackground(new Color(0, 0, 0, 0));
+    boton.setBorder(null);
+         }
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
     
     if(!this.txtCodigoRuta.getText().isEmpty()&&!this.txtDescripcion.getText().isEmpty()
@@ -215,10 +248,15 @@ ListaRutaEntrega listaEntrega = new ListaRutaEntrega();
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtCodigoRuta;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtDestino;
